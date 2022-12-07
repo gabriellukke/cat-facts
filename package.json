@@ -1,5 +1,5 @@
 {
-  "name": "vite-react-boilerplate",
+  "name": "cat-facts",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -25,6 +25,7 @@
     "@typescript-eslint/parser": "^5.45.1",
     "@vitejs/plugin-react": "^2.2.0",
     "autoprefixer": "^10.4.13",
+    "cypress": "^12.0.1",
     "eslint": "^8.29.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-typescript": "^17.0.0",
