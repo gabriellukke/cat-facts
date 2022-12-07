@@ -1,5 +1,5 @@
 import { describe, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
 import Home from '.';
@@ -33,12 +33,15 @@ describe('Home page', () => {
     expect(factsButton).toBeDisabled();
   });
 
-  it('can choose number of facts', () => {
+  it('can choose number of facts', async () => {
     render(<Home />);
 
     const factsInput = screen.getByRole('spinbutton');
     userEvent.type(factsInput, '5');
-    expect(factsInput).toHaveValue(5);
+
+    await waitFor(() => {
+      expect(factsInput).toHaveValue(5);
+    });
 
     const factsButton = screen.getByRole('button', {
       name: /get facts/i,
