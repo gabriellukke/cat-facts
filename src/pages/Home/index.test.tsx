@@ -14,7 +14,7 @@ describe('Home page', () => {
     expect(heading).toBeInTheDocument();
   });
 
-  it("can't click on the button if there is no number of facts", () => {
+  it("can't click on the button if there is no number of facts", async () => {
     render(<Home />);
 
     const factsButton = screen.getByRole('button', {
@@ -23,14 +23,21 @@ describe('Home page', () => {
     expect(factsButton).toBeDisabled();
 
     const factsInput = screen.getByRole('spinbutton');
+
     userEvent.type(factsInput, '5');
-    expect(factsButton).toBeEnabled();
+    await waitFor(() => {
+      expect(factsButton).toBeEnabled();
+    });
 
     userEvent.clear(factsInput);
-    expect(factsButton).toBeDisabled();
+    await waitFor(() => {
+      expect(factsButton).toBeDisabled();
+    });
 
     userEvent.type(factsInput, '0');
-    expect(factsButton).toBeDisabled();
+    await waitFor(() => {
+      expect(factsButton).toBeDisabled();
+    });
   });
 
   it('can choose number of facts', async () => {
