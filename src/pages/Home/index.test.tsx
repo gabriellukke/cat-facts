@@ -14,7 +14,7 @@ describe('Home page', () => {
     expect(heading).toBeInTheDocument();
   });
 
-  it('can\t click on the button if there is no number of facts', () => {
+  it("can't click on the button if there is no number of facts", () => {
     render(<Home />);
 
     const factsButton = screen.getByRole('button', {
